@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8153F02A-A9FC-4460-BCD9-CBBB55274EF5}"
+	ProjectSection(SolutionItems) = preProject
+		src\docker-compose.yml = src\docker-compose.yml
+		src\docker-compose.override.yml = src\docker-compose.override.yml
+		src\.env = src\.env
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{36902CEB-BEDA-490B-962F-20432EA876EA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{1CFDD8EB-C45C-4875-943E-391519A03330}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks", "src\BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj", "{AE9463C5-CEC5-4C28-96B7-EC94B9861516}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.Api", "src\Services\Catalog\Catalog.Api\Catalog.Api.csproj", "{8C84DD70-A61D-4486-AC76-A7FEB031D8F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{E0D656D6-CBC1-4C31-ADD6-B1427BEDD74A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{36902CEB-BEDA-490B-962F-20432EA876EA} = {8153F02A-A9FC-4460-BCD9-CBBB55274EF5}
+		{1CFDD8EB-C45C-4875-943E-391519A03330} = {8153F02A-A9FC-4460-BCD9-CBBB55274EF5}
+		{AE9463C5-CEC5-4C28-96B7-EC94B9861516} = {1CFDD8EB-C45C-4875-943E-391519A03330}
+		{E0D656D6-CBC1-4C31-ADD6-B1427BEDD74A} = {36902CEB-BEDA-490B-962F-20432EA876EA}
+		{8C84DD70-A61D-4486-AC76-A7FEB031D8F4} = {E0D656D6-CBC1-4C31-ADD6-B1427BEDD74A}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE9463C5-CEC5-4C28-96B7-EC94B9861516}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE9463C5-CEC5-4C28-96B7-EC94B9861516}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE9463C5-CEC5-4C28-96B7-EC94B9861516}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE9463C5-CEC5-4C28-96B7-EC94B9861516}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C84DD70-A61D-4486-AC76-A7FEB031D8F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C84DD70-A61D-4486-AC76-A7FEB031D8F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C84DD70-A61D-4486-AC76-A7FEB031D8F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C84DD70-A61D-4486-AC76-A7FEB031D8F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

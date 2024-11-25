@@ -1,0 +1,27 @@
+﻿version: '3.4'
+
+services:
+  #db section
+  catalogdb:
+    container_name: catalog_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Passw0rd@
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_catalog:/var/lib/postgresql/data
+  # microservice api section
+  catalog.api:
+    container_name: catalog-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+    ports:
+      - "8080"
+      - "8081"
+    volumes:
+      - ${APPDATA}\microsoft\UserSecrets\:/root/.microsoft/usersecrets
+      - ${APPDATA}\aspnet\https:/root/.aspnet/https/

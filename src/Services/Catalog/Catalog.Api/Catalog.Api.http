@@ -1,0 +1,47 @@
+@Catalog_Api_HostAddress = https://localhost:5050
+@Product_Id = 9352ffe6-bf85-4cbf-8d4b-143c2f81e547
+@Category_Id = c1
+@Delete_Product_Id = 394af41f-dfd0-4895-80b3-2ee2058fa849
+
+### Create a product
+POST {{Catalog_Api_HostAddress}}/products/
+Content-Type: application/json
+
+{
+    "Name": "Product A",
+    "Categories": ["c5", "c2"],
+    "Description": "Description Product A",
+    "ImageFile": "Image File Product A",
+    "Price": 59,
+    "Quantity": 32
+}
+
+### Get all Products
+GET {{Catalog_Api_HostAddress}}/products/
+Accept: application/json
+
+### Get Product By Product Id
+GET {{Catalog_Api_HostAddress}}/products/{{Product_Id}}
+Accept: application/json
+
+### Get Products by Category
+GET {{Catalog_Api_HostAddress}}/products/{{Category_Id}}
+Accept: application/json
+
+### Update Product
+PUT {{Catalog_Api_HostAddress}}/products
+Content-Type: application/json
+
+{
+    "Id": "394af41f-dfd0-4895-80b3-2ee2058fa849",
+    "Name": "Product A",
+    "Categories": ["c5", "c2", "c33"],
+    "Description": "Description Product A",
+    "ImageFile": "Image File Product A",
+    "Price": 59,
+    "Quantity": 32
+}
+
+### Delete Product
+DELETE {{Catalog_Api_HostAddress}}/products/{{Delete_Product_Id}}
+Accept: application/json
