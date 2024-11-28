@@ -6,3 +6,6 @@ global using BuildingBlocks.Cores;
 global using Marten;
 global using Catalog.Api.Infrastructure.Exceptions;
 global using Catalog.Api.Infrastructure.Configurations;
+global using FluentValidation;
+global using BuildingBlocks.Behaviors;
+global using Catalog.Api.Extensions;

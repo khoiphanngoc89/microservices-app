@@ -5,7 +5,7 @@ public sealed class DeleteProductEndpoint : CarterModule
 {
     public override void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapDelete("/products/{id}", async (Guid id, ISender sender) =>
+        app.MapDelete("/api/products/{id}", async (Guid id, ISender sender) =>
         {
             var result = await sender.Send(new DeleteProductCommand(id));
             var response = result.Adapt<DeleteProductResponse>();

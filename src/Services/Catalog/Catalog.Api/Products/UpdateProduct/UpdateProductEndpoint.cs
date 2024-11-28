@@ -15,7 +15,7 @@ public sealed class UpdateProductEndpoint : CarterModule
 {
     public override void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPut("/products", async (UpdateProductRequest request, ISender sender) =>
+        app.MapPut("/api/products", async (UpdateProductRequest request, ISender sender) =>
         {
             var command = request.Adapt<UpdateProductCommand>();
             var result = await sender.Send(command);

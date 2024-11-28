@@ -1,27 +1,31 @@
-﻿version: '3.4'
-
 services:
-  #db section
   catalogdb:
-    container_name: catalog_db
+    container_name: catalogdb
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=Passw0rd@
+      - POSTGRES_DB=CatalogDb
     restart: always
     ports:
       - "5432:5432"
     volumes:
       - postgres_catalog:/var/lib/postgresql/data
-  # microservice api section
+
   catalog.api:
-    container_name: catalog-api
+    container_name: catalog_api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
+      # need to config the certificates
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=password!
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+      - ConnectionStrings__DefaultConnection=Server=catalogdb;Port=5432;Database=CatalogDb;User Id=postgres;Password=Passw0rd@;Include Error Detail=true
     ports:
-      - "8080"
-      - "8081"
+      - "6000:8080"
+      - "6060:8081"
+    depends_on:
+      - catalogdb
     volumes:
-      - ${APPDATA}\microsoft\UserSecrets\:/root/.microsoft/usersecrets
-      - ${APPDATA}\aspnet\https:/root/.aspnet/https/
+    # need to config the certificates
+      - ~/.aspnet/https:/https:ro

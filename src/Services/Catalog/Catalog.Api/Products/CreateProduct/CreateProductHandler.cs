@@ -1,6 +1,4 @@
-﻿using Catalog.Api.Domains.Entities;
-
-namespace Catalog.Api.Products.CreateProduct;
+﻿namespace Catalog.Api.Products.CreateProduct;
 
 public sealed record CreateProductCommand(
     string Name,
@@ -11,6 +9,20 @@ public sealed record CreateProductCommand(
     int Quantity)
     : ICommand<CreateProductResult>;
 public sealed record CreateProductResult(Guid Id);
+
+public class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
+{
+    public CreateProductCommandValidator()
+    {
+        RuleFor(command => command.Name)
+             .NotEmpty().WithMessage("Name is required")
+             .Length(2, 150).WithMessage("Name must be between 2 and 150 characters");
+
+        RuleFor(x => x.Categories).NotEmpty().WithMessage("Category is required");
+        RuleFor(x => x.Price).GreaterThan(0).WithMessage("Price must be greater than 0");
+        RuleFor(x => x.Quantity).GreaterThan(0).WithMessage("Quantity must be greater than 0");
+    }
+}
 
 internal sealed class CreateProductCommandHandler(IDocumentSession session)
     : ICommandHandler<CreateProductCommand, CreateProductResult>

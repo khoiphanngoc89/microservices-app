@@ -1,19 +1,19 @@
-﻿
-using Catalog.Api.Domains.Entities;
+﻿using Marten.Pagination;
 
 namespace Catalog.Api.Products.GetProducts;
-
-public sealed record GetProductsResponse(IEnumerable<Product> Products);
+public sealed record GetProductsRequest(int? PageNumber= 1, int? PageSize =10);
+public sealed record GetProductsResponse(long PageSize, long PageNumber, long PageCount, IEnumerable<Product> Products);
 
 public sealed class GetProductsEndpoint : CarterModule
 {
     public override void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/products", async (ISender sender) =>
+        app.MapGet("/api/products", async ([AsParameters] GetProductsRequest request , ISender sender) =>
         {
-            var results = await sender.Send(new GetProductsQuery());
-            var response = results.Adapt<GetProductsResponse>();
-            return response;
+            var command = request.Adapt<GetProductsQuery>();
+            var result = await sender.Send(command);
+            var response = new GetProductsResponse(result.Products.PageSize, result.Products.PageNumber, result.Products.PageCount, result.Products);
+            return Results.Ok(response);
         })
         .WithName("GetProducts")
         .Produces<GetProductsResponse>(StatusCodes.Status200OK)

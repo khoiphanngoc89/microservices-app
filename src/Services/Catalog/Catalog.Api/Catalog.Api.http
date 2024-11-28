@@ -34,7 +34,7 @@ Content-Type: application/json
 
 {
     "Id": "394af41f-dfd0-4895-80b3-2ee2058fa849",
-    "Name": "Product A",
+    
     "Categories": ["c5", "c2", "c33"],
     "Description": "Description Product A",
     "ImageFile": "Image File Product A",

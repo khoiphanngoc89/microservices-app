@@ -7,7 +7,7 @@ public sealed class GetProductByCategoryEndpoint : CarterModule
 {
     public override void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/products/{categoryId}", async (string categoryId, ISender sender) =>
+        app.MapGet("/api/products/{categoryId}", async (string categoryId, ISender sender) =>
         {
             var results = await sender.Send(new GetProductsByCategoryQuery(categoryId));
             return Results.Ok(results.Adapt<GetProductsByCatalogryResponse>());

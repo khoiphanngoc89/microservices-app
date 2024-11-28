@@ -7,7 +7,7 @@ public sealed class GetProductByIdEndpoint : CarterModule
 {
     public override void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/products/{id}", async (Guid id, ISender sender) =>
+        app.MapGet("/api/products/{id}", async (Guid id, ISender sender) =>
         {
             var entity = await sender.Send(new GetProductByIdQuery(id));
             var response = entity.Adapt<GetProductByIdResponse>();
