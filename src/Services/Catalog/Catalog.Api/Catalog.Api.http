@@ -25,7 +25,7 @@ GET {{Catalog_Api_HostAddress}}/products/{{Product_Id}}
 Accept: application/json
 
 ### Get Products by Category
-GET {{Catalog_Api_HostAddress}}/products/{{Category_Id}}
+GET {{Catalog_Api_HostAddress}}/products/category/{{Category_Id}}
 Accept: application/json
 
 ### Update Product
