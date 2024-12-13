@@ -1,5 +1,4 @@
-﻿using BuildingBlocks.Application;
-using FluentValidation;
+﻿using FluentValidation;
 using MediatR;
 
 namespace BuildingBlocks.Application.Behaviors;

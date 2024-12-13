@@ -5,7 +5,7 @@
 
 var builder = WebApplication.CreateBuilder(args);
 
-var app = builder.AddService().UsePipeline();
+var app = builder.AddServices().UsePipeline();
 
 
 // 

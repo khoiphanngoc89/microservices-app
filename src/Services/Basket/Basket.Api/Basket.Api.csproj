@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
@@ -7,14 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Application\Features\CheckoutBasket\" />
-    <Folder Include="Infrastructure\" />
-    <Folder Include="Presentation\" />
-    <Folder Include="Infrastructure\Persistence\" />
+    <Compile Remove="Application\Features\**" />
+    <Content Remove="Application\Features\**" />
+    <EmbeddedResource Remove="Application\Features\**" />
+    <None Remove="Application\Features\**" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Marten" Version="7.33.1" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
     <PackageReference Include="System.Text.Json" Version="9.0.0" />
   </ItemGroup>
 
