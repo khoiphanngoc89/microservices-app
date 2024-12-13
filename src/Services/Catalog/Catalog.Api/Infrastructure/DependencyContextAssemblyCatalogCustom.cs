@@ -4,8 +4,6 @@
 // while Carter's nuget was installed in another assembly
 public sealed class DependencyContextAssemblyCatalogCustom : DependencyContextAssemblyCatalog
 {
-    public override IReadOnlyCollection<Assembly> GetAssemblies() =>
-    [
-        typeof(Program).Assembly
-    ];
+    public override IReadOnlyCollection<Assembly> GetAssemblies()
+        => [typeof(Program).Assembly];
 }

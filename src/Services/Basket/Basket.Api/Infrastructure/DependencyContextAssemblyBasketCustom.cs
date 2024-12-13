@@ -2,11 +2,9 @@
 
 namespace Basket.Api.Infrastructure;
 
-public class DependencyContextAssemblyBasketCustom
+public sealed class DependencyContextAssemblyBasketCustom
     : DependencyContextAssemblyCatalog
 {
     public override IReadOnlyCollection<Assembly> GetAssemblies()
-    {
-        return [typeof(Program).Assembly];
-    }
+        => [typeof(Program).Assembly];
 }

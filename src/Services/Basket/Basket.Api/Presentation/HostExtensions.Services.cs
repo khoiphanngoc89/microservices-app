@@ -1,5 +1,4 @@
-﻿
-namespace Basket.Api.Presentation.Extensions;
+﻿namespace Basket.Api.Presentation.Extensions;
 
 public static partial class HostExtensions
 {
@@ -28,9 +27,29 @@ public static partial class HostExtensions
 
         // register services
         builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+        builder.Services.Decorate<IBasketRepository, CachedBasketRepository>();
+
+        var redisConnectionString = builder.Configuration.GetConnectionString("Redis");
+        ArgumentNullException.ThrowIfNullOrWhiteSpace(redisConnectionString);
+        builder.Services.AddStackExchangeRedisCache(opts =>
+        {
+            opts.Configuration = redisConnectionString;
+        });
+
+        // register the decorate with add scope
+        //builder.Services.AddScoped<IBasketRepository>(provider =>
+        //{
+        //    var repository = provider.GetRequiredService<BasketRepository>();
+        //    return new CachedBasketRepository(repository, provider.GetRequiredService<IDistributedCache>());
+        //});
 
         // Register global exception handler
         builder.Services.AddExceptionHandler<CustomExceptionHandler>();
+
+        // register for health check
+        builder.Services.AddHealthChecks()
+            .AddNpgSql(connectionStrings)
+            .AddRedis(redisConnectionString);
 
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();

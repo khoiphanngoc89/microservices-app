@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-
-namespace Basket.Api.Presentation.Extensions;
+﻿namespace Basket.Api.Presentation.Extensions;
 
 public static partial class HostExtensions
 {
@@ -20,6 +18,14 @@ public static partial class HostExtensions
         // need to add option, if not, the exception would be throw
         // when application run
         app.UseExceptionHandler(options => { });
+
+        // use health check
+        app.UseHealthChecks("/health", new HealthCheckOptions
+        {
+            // must add this configuration for display in detail all related
+            // services
+            ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+        });
 
         return app;
     }

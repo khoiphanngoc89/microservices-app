@@ -1,8 +1,6 @@
-﻿using Catalog.Api.Domains;
+﻿namespace Catalog.Api.Infrastructure;
 
-namespace Catalog.Api.Infrastructure;
-
-public class CatalogInitialData : IInitialData
+public sealed class CatalogInitialData : IInitialData
 {
     public async Task Populate(IDocumentStore store, CancellationToken cancellation)
     {

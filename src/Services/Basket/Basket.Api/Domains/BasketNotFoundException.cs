@@ -3,12 +3,13 @@
 public sealed class BasketNotFoundException
     : NotFoundException
 {
+
     public BasketNotFoundException(string userName)
         : base("Basket", userName)
     {
     }
 
-    public static void ThrowIfNull([NotNull] ShoppingCart? cart, [CallerArgumentExpression(nameof(cart))] string? userName = null)
+    public static void ThrowIfNull([NotNull] ShoppingCart? cart, [CallerArgumentExpression(nameof(cart))] string userName = default!)
     {
         if (cart is null)
         {

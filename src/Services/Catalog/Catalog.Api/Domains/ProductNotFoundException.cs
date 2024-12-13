@@ -8,7 +8,7 @@ public sealed class ProductNotFoundException
     {
     }
 
-    public static void ThrowIfNull([NotNull] Product? product, [CallerArgumentExpression(nameof(product))] string? paramName = null)
+    public static void ThrowIfNull([NotNull] Product? product, [CallerArgumentExpression(nameof(product))] string paramName = default!)
     {
         if (product is null)
         {
