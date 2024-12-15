@@ -1,10 +1,4 @@
-﻿using BuildingBlocks.Application.Behaviors;
-using BuildingBlocks.Presentation.Handlers;
-using Catalog.Api.Infrastructure;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.Extensions.Configuration;
-
-namespace Catalog.Api.Extensions;
+﻿namespace Catalog.Api.Extensions;
 
 public static partial class HostExtensions
 {

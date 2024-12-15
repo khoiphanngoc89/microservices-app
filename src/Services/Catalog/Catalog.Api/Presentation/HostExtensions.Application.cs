@@ -1,10 +1,4 @@
-﻿using System.Net.WebSockets;
-using HealthChecks.UI.Client;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Catalog.Api.Extensions;
+﻿namespace Catalog.Api.Extensions;
 
 public static partial class HostExtensions
 {

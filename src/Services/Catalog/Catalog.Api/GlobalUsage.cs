@@ -14,3 +14,6 @@ global using System.Reflection;
 global using BuildingBlocks.Domains;
 global using System.Diagnostics.CodeAnalysis;
 global using System.Runtime.CompilerServices;
+global using BuildingBlocks.Presentation.Handlers;
+global using HealthChecks.UI.Client;
+global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
