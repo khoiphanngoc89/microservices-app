@@ -1,4 +1,4 @@
-﻿using Discount.Grpc.Infraustructure.Services;
+﻿using Discount.Grpc.Application;
 
 namespace Discount.Grpc.Presentation;
 

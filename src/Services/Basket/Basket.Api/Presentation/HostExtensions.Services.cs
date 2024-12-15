@@ -1,4 +1,6 @@
-﻿namespace Basket.Api.Presentation.Extensions;
+﻿using Discount.Grpc;
+
+namespace Basket.Api.Presentation.Extensions;
 
 public static partial class HostExtensions
 {
@@ -42,6 +44,25 @@ public static partial class HostExtensions
         //    var repository = provider.GetRequiredService<BasketRepository>();
         //    return new CachedBasketRepository(repository, provider.GetRequiredService<IDistributedCache>());
         //});
+
+        // register grpc
+        var grpcAddress = builder.Configuration["GrpcSettings:DiscountUrl"];
+        ArgumentNullException.ThrowIfNullOrWhiteSpace(grpcAddress);
+        builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(opts =>
+        {
+            opts.Address = new Uri(grpcAddress);
+        }).ConfigurePrimaryHttpMessageHandler(() =>
+        {
+            // https://github.com/grpc/grpc-dotnet/issues/792
+            // For debug only
+            var handler = new HttpClientHandler()
+            {
+                ServerCertificateCustomValidationCallback =
+                HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+            };
+
+            return handler;
+        });
 
         // Register global exception handler
         builder.Services.AddExceptionHandler<CustomExceptionHandler>();

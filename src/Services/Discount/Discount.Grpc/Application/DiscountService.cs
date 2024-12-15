@@ -1,6 +1,6 @@
 ﻿using Discount.Grpc.Domain;
 
-namespace Discount.Grpc.Infraustructure.Services;
+namespace Discount.Grpc.Application;
 
 public sealed class DiscountService
     (DiscountDbContext dbContext, ILogger<DiscountService> logger)
@@ -48,7 +48,7 @@ public sealed class DiscountService
         // nested pattern successfully matches
         // the corresponding property or field of that expression result
         if (coupon is { Id: <= 0 } || await dbContext.Coupons.AsNoTracking()
-            .FirstOrDefaultAsync(x => x.Id == coupon.Id) is null) 
+            .FirstOrDefaultAsync(x => x.Id == coupon.Id) is null)
         {
             throw new RpcException(new Status(StatusCode.InvalidArgument, "Invalid request object"));
         }
