@@ -1,6 +1,6 @@
 ﻿using Discount.Grpc.Application;
 
-namespace Discount.Grpc.Presentation;
+namespace Discount.Grpc.Presentation.Extensions;
 
 public static partial class HostExtensions
 {

@@ -28,6 +28,7 @@
     <PackageReference Include="Scrutor" Version="5.0.2" />
     <PackageReference Include="System.Text.Json" Version="9.0.0" />
 	<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="8.0.1" />
+	<PackageReference Include="Carter" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿global using Discount.Grpc.Presentation;
+﻿global using Discount.Grpc.Presentation.Extensions;
 global using Microsoft.EntityFrameworkCore;
 global using Discount.Grpc.Application;
 global using Discount.Grpc.Domain;

@@ -34,6 +34,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Infrastructure", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Api", "src\Services\Ordering\Ordering.Api\Ordering.Api.csproj", "{0DB3BC82-A2CF-4F7C-95C6-359BE51CE2C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Domain", "src\Services\Ordering\Ordering.Domain\Ordering.Domain.csproj", "{2C0060BA-C720-4A1E-8E26-7657A6599C88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Application", "src\Services\Ordering\Ordering.Application\Ordering.Application.csproj", "{4E9A1709-8DBF-498B-A09E-B1D19B4C002B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +72,14 @@ Global
 		{0DB3BC82-A2CF-4F7C-95C6-359BE51CE2C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DB3BC82-A2CF-4F7C-95C6-359BE51CE2C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DB3BC82-A2CF-4F7C-95C6-359BE51CE2C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C0060BA-C720-4A1E-8E26-7657A6599C88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C0060BA-C720-4A1E-8E26-7657A6599C88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C0060BA-C720-4A1E-8E26-7657A6599C88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C0060BA-C720-4A1E-8E26-7657A6599C88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E9A1709-8DBF-498B-A09E-B1D19B4C002B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E9A1709-8DBF-498B-A09E-B1D19B4C002B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E9A1709-8DBF-498B-A09E-B1D19B4C002B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E9A1709-8DBF-498B-A09E-B1D19B4C002B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,5 +97,7 @@ Global
 		{BE2F7DAA-5B98-48F2-9679-42AD61B7846F} = {36902CEB-BEDA-490B-962F-20432EA876EA}
 		{C95DBFC6-240D-4323-B958-B2220F51914D} = {BE2F7DAA-5B98-48F2-9679-42AD61B7846F}
 		{0DB3BC82-A2CF-4F7C-95C6-359BE51CE2C1} = {BE2F7DAA-5B98-48F2-9679-42AD61B7846F}
+		{2C0060BA-C720-4A1E-8E26-7657A6599C88} = {BE2F7DAA-5B98-48F2-9679-42AD61B7846F}
+		{4E9A1709-8DBF-498B-A09E-B1D19B4C002B} = {BE2F7DAA-5B98-48F2-9679-42AD61B7846F}
 	EndGlobalSection
 EndGlobal

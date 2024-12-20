@@ -7,7 +7,7 @@ global using Marten;
 global using Catalog.Api.Infrastructure;
 global using FluentValidation;
 global using BuildingBlocks.Application.Behaviors;
-global using Catalog.Api.Extensions;
+global using Catalog.Api.Presentation.Extensions;
 global using Marten.Pagination;
 global using Marten.Schema;
 global using System.Reflection;

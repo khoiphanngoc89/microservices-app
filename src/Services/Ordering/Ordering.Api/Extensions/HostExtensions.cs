@@ -1,4 +1,4 @@
-﻿namespace Discount.Grpc.Presentation;
+﻿namespace Ordering.Api.Extensions;
 
 public static partial class HostExtensions
 {
