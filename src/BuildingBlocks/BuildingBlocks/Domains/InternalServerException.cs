@@ -13,5 +13,11 @@ public class InternalServerException : Exception
         Details = details;
     }
 
+    public InternalServerException(string message, string details, Exception innerException)
+        : base(message, innerException)
+    {
+        Details = details;
+    }
+
     public string? Details { get; }
 }
