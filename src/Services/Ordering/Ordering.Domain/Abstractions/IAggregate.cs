@@ -8,5 +8,5 @@ public interface IAggregate : IAuditable
 {
     IReadOnlyList<IDomainEvent> DomainEvents { get; }
     void AddDomainEvent(IDomainEvent domainEvent);
-    IDomainEvent[] ClearDomainEvent();
+    IDomainEvent[] ClearDomainEvents();
 }

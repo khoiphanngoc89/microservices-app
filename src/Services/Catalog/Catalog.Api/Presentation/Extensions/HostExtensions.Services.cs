@@ -20,7 +20,7 @@ public static partial class HostExtensions
         // Add Fluent Validation in the service
         builder.Services.AddValidatorsFromAssembly(assembly);
 
-        var connectionStrings = builder.Configuration.GetConnectionString("DefaultConnection");
+        var connectionStrings = builder.Configuration.GetConnectionString(Constants.DefaultConnection);
         ArgumentNullException.ThrowIfNullOrWhiteSpace(connectionStrings);
 
         // register database and its migration

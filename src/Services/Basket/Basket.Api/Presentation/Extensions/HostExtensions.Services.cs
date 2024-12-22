@@ -23,7 +23,7 @@ public static partial class HostExtensions
         builder.Services.AddValidatorsFromAssembly(assembly);
 
         // register database
-        var connectionStrings = builder.Configuration.GetConnectionString("DefaultConnection");
+        var connectionStrings = builder.Configuration.GetConnectionString(Constants.DefaultConnection);
         ArgumentNullException.ThrowIfNullOrWhiteSpace(connectionStrings);
         builder.Services.AddDatabase(connectionStrings);
 

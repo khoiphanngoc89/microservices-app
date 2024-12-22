@@ -11,7 +11,9 @@ public sealed record Address
     public string? State { get; } = default!;
     public string Country { get; } = default!;
     public string ZipCode { get; } = default!;
+#pragma warning disable CS0628 // New protected member declared in sealed type
     protected Address()
+#pragma warning restore CS0628 // New protected member declared in sealed type
     {
     }
 
@@ -36,7 +38,7 @@ public sealed record Address
         ZipCode = zipCode;
     }
 
-    public static Address Create(string firstName,
+    public static Address Of(string firstName,
                                   string lastName,
                                   string? emailAddress,
                                   string addressLine,
@@ -49,5 +51,19 @@ public sealed record Address
         DomainException.ThrowIfNullOrWhitespace(emailAddress);
         DomainException.ThrowIfNullOrWhitespace(addressLine);
         return new Address(firstName, lastName, emailAddress, addressLine, phoneNumber, city, state, country, zipCode);
+    }
+
+    public static Address Of(string firstName,
+                                  string lastName,
+                                  string? emailAddress,
+                                  string addressLine,
+                                  string phoneNumber,
+                                  string city,
+                                  string country,
+                                  string zipCode)
+    {
+        DomainException.ThrowIfNullOrWhitespace(emailAddress);
+        DomainException.ThrowIfNullOrWhitespace(addressLine);
+        return new Address(firstName, lastName, emailAddress, addressLine, phoneNumber, city, string.Empty, country, zipCode);
     }
 }

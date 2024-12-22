@@ -1,4 +1,7 @@
-﻿namespace Ordering.Api.Extensions;
+﻿using Ordering.Application;
+using Ordering.Infrastructure;
+
+namespace Ordering.Api.Extensions;
 
 public static partial class HostExtensions
 {

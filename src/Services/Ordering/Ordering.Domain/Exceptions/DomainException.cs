@@ -1,10 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
-using System.Xml.Linq;
 
 namespace Ordering.Domain.Exceptions;
 
-public class DomainException : Exception
+public sealed class DomainException : Exception
 {
     private const string DefaultMessage = "Domain Exception: \"{0}\" throws from Domain Layer";
     public DomainException()
