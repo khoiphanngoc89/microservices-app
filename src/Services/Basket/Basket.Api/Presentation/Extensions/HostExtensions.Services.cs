@@ -1,4 +1,5 @@
-﻿using BuildingBlocks.Presentation;
+﻿using BuildingBlocks.Application.Endpoints;
+using BuildingBlocks.Presentation;
 using Discount.Grpc;
 
 namespace Basket.Api.Presentation.Extensions;
@@ -8,7 +9,7 @@ public static partial class HostExtensions
     internal static WebApplication AddServices(this WebApplicationBuilder builder)
     {
         // Add services to the container.
-        builder.Services.AddCarter(new DependencyContextAssemblyBasketCustom());
+        builder.Services.AddEndpoints(typeof(Program).Assembly);
 
         var assembly = typeof(Program).Assembly;
         builder.Services.AddMediatR(config =>

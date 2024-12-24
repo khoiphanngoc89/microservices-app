@@ -5,7 +5,7 @@ public static partial class HostExtensions
     internal static WebApplication AddServices(this WebApplicationBuilder builder)
     {
         // Add services to the container.
-        builder.Services.AddCarter(new DependencyContextAssemblyCatalogCustom());
+        builder.Services.AddEndpoints(typeof(Program).Assembly);
 
         var assembly = typeof(Program).Assembly;
         builder.Services.AddMediatR(config =>

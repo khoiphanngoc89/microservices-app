@@ -1,5 +1,4 @@
 using Ordering.Api.Extensions;
-using Ordering.Infrastructure.Data.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,9 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.AddServies().UsePipeline();
 
-if (app.Environment.IsDevelopment())
-{
-    await app.InitlialiseDatabase();
-}
+//if (app.Environment.IsDevelopment())
+//{
+//    await app.InitlialiseDatabase();
+//}
 
 app.Run();

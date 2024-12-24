@@ -1,10 +1,12 @@
-﻿namespace Catalog.Api.Application.Features.GetProductById;
+﻿using BuildingBlocks.Application.Endpoints;
+
+namespace Catalog.Api.Application.Features.GetProductById;
 
 public sealed record GetProductByIdResponse(Product Product);
 
-public sealed class GetProductByIdEndpoint : CarterModule
+public sealed class GetProductByIdEndpoint : IEndpointModule
 {
-    public override void AddRoutes(IEndpointRouteBuilder app)
+    public void AddEndpoints(IEndpointRouteBuilder app)
     {
         app.MapGet("/api/products/{id}", async (Guid id, ISender sender) =>
         {

@@ -1,10 +1,12 @@
-﻿namespace Basket.Api.Application.Features.DeleteBasket;
+﻿using BuildingBlocks.Application.Endpoints;
+
+namespace Basket.Api.Application.Features.DeleteBasket;
 
 public sealed record DeleteBasketResponse(bool IsSuccess);
 
-public sealed class DeleteBasketEndpoint : CarterModule
+public sealed class DeleteBasketEndpoint : IEndpointModule
 {
-    public override void AddRoutes(IEndpointRouteBuilder app)
+    public void AddEndpoints(IEndpointRouteBuilder app)
     {
         app.MapDelete("/api/baskets/{userName}", async (string userName, ISender sender) =>
         {

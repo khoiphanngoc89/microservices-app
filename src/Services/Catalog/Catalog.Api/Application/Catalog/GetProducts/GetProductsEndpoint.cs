@@ -1,10 +1,12 @@
-﻿namespace Catalog.Api.Application.Features.GetProducts;
+﻿using BuildingBlocks.Application.Endpoints;
+
+namespace Catalog.Api.Application.Features.GetProducts;
 public sealed record GetProductsRequest(int? PageNumber = 1, int? PageSize = 10);
 public sealed record GetProductsResponse(long PageSize, long PageNumber, long PageCount, IEnumerable<Product> Products);
 
-public sealed class GetProductsEndpoint : CarterModule
+public sealed class GetProductsEndpoint : IEndpointModule
 {
-    public override void AddRoutes(IEndpointRouteBuilder app)
+    public void AddEndpoints(IEndpointRouteBuilder app)
     {
         app.MapGet("/api/products", async ([AsParameters] GetProductsRequest request, ISender sender) =>
         {

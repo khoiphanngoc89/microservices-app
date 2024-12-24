@@ -5,7 +5,7 @@ global using BuildingBlocks.Application;
 global using BuildingBlocks.Application.Behaviors;
 global using BuildingBlocks.Domains;
 global using BuildingBlocks.Presentation;
-global using Carter;
+global using BuildingBlocks.Application.Endpoints;
 global using Catalog.Api.Domain;
 global using Catalog.Api.Infrastructure;
 global using Catalog.Api.Presentation.Extensions;

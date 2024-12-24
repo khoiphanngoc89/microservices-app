@@ -1,11 +1,13 @@
-﻿namespace Catalog.Api.Application.Features.GetProductsByCategory;
+﻿
+
+namespace Catalog.Api.Application.Features.GetProductsByCategory;
 
 //public sealed record GetProductsByCatalogRequest
 public sealed record GetProductsByCatalogryResponse(IEnumerable<Product> products);
 
-public sealed class GetProductByCategoryEndpoint : CarterModule
+public sealed class GetProductByCategoryEndpoint : IEndpointModule
 {
-    public override void AddRoutes(IEndpointRouteBuilder app)
+    public void AddEndpoints(IEndpointRouteBuilder app)
     {
         app.MapGet("/api/products/category/{categoryId}", async (string categoryId, ISender sender) =>
         {

@@ -1,9 +1,11 @@
-﻿namespace Catalog.Api.Application.Features.DeleteProduct;
+﻿using BuildingBlocks.Application.Endpoints;
+
+namespace Catalog.Api.Application.Features.DeleteProduct;
 
 public sealed record DeleteProductResponse(bool IsSuccess);
-public sealed class DeleteProductEndpoint : CarterModule
+public sealed class DeleteProductEndpoint : IEndpointModule
 {
-    public override void AddRoutes(IEndpointRouteBuilder app)
+    public void AddEndpoints(IEndpointRouteBuilder app)
     {
         app.MapDelete("/api/products/{id}", async (Guid id, ISender sender) =>
         {

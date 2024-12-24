@@ -1,11 +1,13 @@
-﻿namespace Basket.Api.Application.Features.GetBasket;
+﻿using BuildingBlocks.Application.Endpoints;
+
+namespace Basket.Api.Application.Features.GetBasket;
 
 // public record GetBasketRequest(string UserName);
 public sealed record GetBasketResponse(ShoppingCart Cart);
 
-public sealed class GetBasketEndpoint : CarterModule
+public sealed class GetBasketEndpoint : IEndpointModule
 {
-    public override void AddRoutes(IEndpointRouteBuilder app)
+    public void AddEndpoints(IEndpointRouteBuilder app)
     {
         app.MapGet("/api/baskets/{userName}", async (string userName, ISender sender) =>
         {

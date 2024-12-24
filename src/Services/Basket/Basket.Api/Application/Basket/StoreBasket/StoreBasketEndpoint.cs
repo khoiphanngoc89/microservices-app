@@ -3,9 +3,9 @@
 public sealed record StoreBasketRequest(ShoppingCart Cart);
 public sealed record StoreBasketResponse(string UserName);
 
-public sealed class StoreBasketEndpoint : CarterModule
+public sealed class StoreBasketEndpoint : IEndpointModule
 {
-    public override void AddRoutes(IEndpointRouteBuilder app)
+    public void AddEndpoints(IEndpointRouteBuilder app)
     {
         app.MapPost("/api/baskets", async (StoreBasketRequest request, ISender sender) =>
         {

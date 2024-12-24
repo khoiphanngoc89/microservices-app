@@ -5,7 +5,7 @@ global using Basket.Api.Infrastructure;
 global using BuildingBlocks.Application;
 global using BuildingBlocks.Application.Behaviors;
 global using BuildingBlocks.Domains;
-global using Carter;
+global using BuildingBlocks.Application.Endpoints;
 global using FluentValidation;
 global using HealthChecks.UI.Client;
 global using Mapster;

@@ -1,4 +1,6 @@
-﻿namespace Basket.Api.Presentation.Extensions;
+﻿using BuildingBlocks.Application.Endpoints;
+
+namespace Basket.Api.Presentation.Extensions;
 
 public static partial class HostExtensions
 {
@@ -12,7 +14,7 @@ public static partial class HostExtensions
         app.UseHttpsRedirection();
 
         // Configure  the HTTP request pipeline
-        app.MapCarter();
+        app.MapEndpoints();
 
         // Use exception handler in Host
         // need to add option, if not, the exception would be throw

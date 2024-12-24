@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Runtime.CompilerServices;
-using BuildingBlocks.Domains;
+﻿using BuildingBlocks.Domains;
 
 namespace Ordering.Application.Exceptions;
 
@@ -19,7 +17,7 @@ public sealed class OrderNotFoundException : NotFoundException
     {
     }
 
-    public static void ThrowIfNull([NotNull] Order? order, [CallerArgumentExpression(nameof(order))] string paramName = default!)
+    public static void ThrowIfNull(Order? order, string paramName = default!)
     {
         if (order is null)
         {
@@ -27,7 +25,7 @@ public sealed class OrderNotFoundException : NotFoundException
         }
     }
 
-    public static void ThrowIfNull([NotNull] Order? order, OrderId orderId)
+    public static void ThrowIfNull(Order? order, OrderId orderId)
     {
         if (order is null)
         {

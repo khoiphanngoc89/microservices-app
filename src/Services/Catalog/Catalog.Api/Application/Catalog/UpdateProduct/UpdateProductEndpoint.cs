@@ -11,9 +11,9 @@ public sealed record UpdateProductRequest(
 
 public sealed record UpdateProductResponse(bool IsSuccess);
 
-public sealed class UpdateProductEndpoint : CarterModule
+public sealed class UpdateProductEndpoint : IEndpointModule
 {
-    public override void AddRoutes(IEndpointRouteBuilder app)
+    public void AddEndpoints(IEndpointRouteBuilder app)
     {
         app.MapPut("/api/products", async (UpdateProductRequest request, ISender sender) =>
         {

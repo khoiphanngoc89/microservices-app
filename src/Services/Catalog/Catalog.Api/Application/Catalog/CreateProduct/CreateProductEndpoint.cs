@@ -1,4 +1,6 @@
-﻿namespace Catalog.Api.Application.Features.CreateProduct;
+﻿using BuildingBlocks.Application.Endpoints;
+
+namespace Catalog.Api.Application.Features.CreateProduct;
 
 public sealed record CreateProductRequest(
     string Name,
@@ -10,9 +12,9 @@ public sealed record CreateProductRequest(
 
 public sealed record CreateProductResponse(Guid Id);
 
-public sealed class CreateProductEndpoint : CarterModule
+public sealed class CreateProductEndpoint : IEndpointModule
 {
-    public override void AddRoutes(IEndpointRouteBuilder app)
+    public void AddEndpoints(IEndpointRouteBuilder app)
     {
         app.MapPost("/api/products", async (CreateProductRequest request, ISender sender) =>
         {
