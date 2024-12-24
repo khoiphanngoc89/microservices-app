@@ -13,8 +13,8 @@ public sealed class CachedBasketRepository
         if (!string.IsNullOrWhiteSpace(cachedBasket))
         {
             return JsonSerializer.Deserialize<ShoppingCart>(cachedBasket)!;
-        }    
-            
+        }
+
         var basket = await repository.GetBasketAsync(userName, cancellationToken);
         await cached.SetStringAsync(userName, JsonSerializer.Serialize(basket), cancellationToken);
         return basket;
@@ -23,7 +23,7 @@ public sealed class CachedBasketRepository
     public async Task<ShoppingCart> StoreBasketAsync(ShoppingCart basket, CancellationToken cancellationToken = default)
     {
         await repository.StoreBasketAsync(basket, cancellationToken);
-        await cached.SetStringAsync(basket.UserName, JsonSerializer.Serialize(basket),cancellationToken);
+        await cached.SetStringAsync(basket.UserName, JsonSerializer.Serialize(basket), cancellationToken);
         return basket;
     }
 

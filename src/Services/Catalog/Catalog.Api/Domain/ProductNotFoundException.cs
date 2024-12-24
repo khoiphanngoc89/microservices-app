@@ -1,10 +1,11 @@
-﻿namespace Catalog.Api.Domains;
+﻿namespace Catalog.Api.Domain;
 
 public sealed class ProductNotFoundException
     : NotFoundException
 {
+    private const string Product = nameof(Product);
     public ProductNotFoundException(string Id)
-    : base("Product", Id)
+    : base(Product, Id)
     {
     }
 

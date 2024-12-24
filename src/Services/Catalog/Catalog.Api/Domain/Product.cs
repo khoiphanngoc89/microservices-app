@@ -1,4 +1,4 @@
-﻿namespace Catalog.Api.Domains;
+﻿namespace Catalog.Api.Domain;
 
 public class Product
 {

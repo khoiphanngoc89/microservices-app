@@ -1,6 +1,4 @@
-﻿using Catalog.Api.Domains;
-
-namespace Catalog.Api.Application.Features.GetProducts;
+﻿namespace Catalog.Api.Application.Features.GetProducts;
 public sealed record GetProductsRequest(int? PageNumber = 1, int? PageSize = 10);
 public sealed record GetProductsResponse(long PageSize, long PageNumber, long PageCount, IEnumerable<Product> Products);
 

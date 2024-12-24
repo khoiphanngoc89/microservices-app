@@ -49,7 +49,7 @@ public sealed class OrderConfiguration : IEntityTypeConfiguration<Order>
                 paymentBuilder.Property(p => p.CardNumber)
                     .HasMaxLength(50)
                     .IsRequired();
-                
+
                 paymentBuilder.Property(p => p.Expiration)
                     .HasMaxLength(10)
                     .IsRequired();

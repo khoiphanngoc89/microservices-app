@@ -1,7 +1,4 @@
-﻿using BuildingBlocks.Application;
-using Catalog.Api.Domains;
-
-namespace Catalog.Api.Application.Features.CreateProduct;
+﻿namespace Catalog.Api.Application.Features.CreateProduct;
 
 public sealed record CreateProductCommand(
     string Name,

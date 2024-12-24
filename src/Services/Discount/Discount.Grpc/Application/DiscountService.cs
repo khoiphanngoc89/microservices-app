@@ -1,6 +1,4 @@
-﻿using Discount.Grpc.Domain;
-
-namespace Discount.Grpc.Application;
+﻿namespace Discount.Grpc.Application;
 
 public sealed class DiscountService
     (DiscountDbContext dbContext, ILogger<DiscountService> logger)

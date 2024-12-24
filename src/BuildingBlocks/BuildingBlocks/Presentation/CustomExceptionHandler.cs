@@ -5,12 +5,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace BuildingBlocks.Presentation.Handlers;
+namespace BuildingBlocks.Presentation;
 
 public sealed class CustomExceptionHandler
     (ILogger<CustomExceptionHandler> logger)
     : IExceptionHandler
 {
+    private const string traceId = nameof(traceId);
+    private const string ValidationErrors = nameof(ValidationErrors);
     public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
     {
         logger.LogError("Error message: {exceptionMessage}, Time of occurrence {time}"
@@ -59,11 +61,11 @@ public sealed class CustomExceptionHandler
             Instance = httpContext.Request.Path
         };
 
-        problemDetails.Extensions.Add("traceId", httpContext.TraceIdentifier);
+        problemDetails.Extensions.Add(traceId, httpContext.TraceIdentifier);
 
         if (exception is ValidationException validationException)
         {
-            problemDetails.Extensions.Add("ValidationErrors", validationException.Errors);
+            problemDetails.Extensions.Add(ValidationErrors, validationException.Errors);
         }
 
         await httpContext.Response.WriteAsJsonAsync(problemDetails, cancellationToken: cancellationToken);

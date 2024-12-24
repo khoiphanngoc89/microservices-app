@@ -6,7 +6,7 @@ public sealed class DiscountDbContext : DbContext
     public DiscountDbContext(DbContextOptions<DiscountDbContext> options)
         : base(options)
     {
-        
+
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

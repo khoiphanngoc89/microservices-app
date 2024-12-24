@@ -1,7 +1,4 @@
-﻿using BuildingBlocks.Application;
-using Catalog.Api.Domains;
-
-namespace Catalog.Api.Application.Features.DeleteProduct;
+﻿namespace Catalog.Api.Application.Features.DeleteProduct;
 
 public sealed record DeleteProductCommand(Guid Id)
     : ICommand<DeleteProductResult>;

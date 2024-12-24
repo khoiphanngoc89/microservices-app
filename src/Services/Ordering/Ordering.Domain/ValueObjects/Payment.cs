@@ -3,7 +3,7 @@
 public sealed record Payment
 {
     private const int DefaultLength = 3;
-    public string? CardHolderName { get; } = default!;
+    public string CardHolderName { get; } = default!;
     public string CardNumber { get; } = default!;
     public string Expiration { get; } = default!;
     public string CVV { get; } = default!;
@@ -24,18 +24,18 @@ public sealed record Payment
         PaymentMethod = paymentMethod;
     }
 
-    public static Payment Of(string cardName,
+    public static Payment Of(string CardHolderName,
                                   string cardNumber,
                                   string expiration,
                                   string cvv,
                                   int paymentMethod)
     {
-        DomainException.ThrowIfNullOrWhitespace(cardName);
+        DomainException.ThrowIfNullOrWhitespace(CardHolderName);
         DomainException.ThrowIfNullOrWhitespace(cardNumber);
         DomainException.ThrowIfNullOrWhitespace(expiration);
         DomainException.ThrowIfNullOrWhitespace(cvv);
         DomainException.ThrowIfNotEqual(cvv.Length, DefaultLength);
 
-        return new Payment(cardName, cardNumber, expiration, cvv, paymentMethod);
+        return new Payment(CardHolderName, cardNumber, expiration, cvv, paymentMethod);
     }
 }

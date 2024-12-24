@@ -1,6 +1,4 @@
-﻿using Catalog.Api.Domains;
-
-namespace Catalog.Api.Application.Features.GetProductById;
+﻿namespace Catalog.Api.Application.Features.GetProductById;
 
 public sealed record GetProductByIdResponse(Product Product);
 

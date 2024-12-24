@@ -1,7 +1,4 @@
-﻿using BuildingBlocks.Application;
-using Catalog.Api.Domains;
-
-namespace Catalog.Api.Application.Features.GetProducts;
+﻿namespace Catalog.Api.Application.Features.GetProducts;
 
 public sealed record GetProductsQuery(int? PageNumber = 1, int? PageSize = 10) : IQuery<GetProductsResult>;
 public sealed record GetProductsResult(IPagedList<Product> Products);

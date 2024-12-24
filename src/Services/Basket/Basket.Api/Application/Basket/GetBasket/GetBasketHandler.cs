@@ -1,6 +1,4 @@
-﻿using Marten;
-
-namespace Basket.Api.Application.Features.GetBasket;
+﻿namespace Basket.Api.Application.Features.GetBasket;
 
 public sealed record GetBasketQuery(string UserName) : IQuery<GetBasketResult>;
 public sealed record GetBasketResult(ShoppingCart? Cart);

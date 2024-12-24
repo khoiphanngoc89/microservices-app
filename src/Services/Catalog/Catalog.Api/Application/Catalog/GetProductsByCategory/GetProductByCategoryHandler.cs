@@ -1,7 +1,4 @@
-﻿using BuildingBlocks.Application;
-using Catalog.Api.Domains;
-
-namespace Catalog.Api.Application.Features.GetProductsByCategory;
+﻿namespace Catalog.Api.Application.Features.GetProductsByCategory;
 
 public sealed record GetProductsByCategoryQuery(string Catagory)
     : IQuery<GetProductByCategoryResult>;

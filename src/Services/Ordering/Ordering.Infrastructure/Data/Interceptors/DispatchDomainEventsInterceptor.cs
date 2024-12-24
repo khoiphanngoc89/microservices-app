@@ -34,17 +34,19 @@ public sealed class DispatchDomainEventsInterceptor(IMediator mediator) : SaveCh
         var domainEvents = aggregates
             .SelectMany(x => x.DomainEvents)
             .ToList();
+
+        // fire domain events if existed
         if (domainEvents.Any())
         {
             // clear all domain events because they are already dispatched
             // and we don't want to dispatch them again
             aggregates.ToList()
             .ForEach(x => x.ClearDomainEvents());
-        
+
             foreach (var domainEvent in domainEvents)
             {
                 await mediator.Publish(domainEvent);
-            }    
-        }    
+            }
+        }
     }
 }

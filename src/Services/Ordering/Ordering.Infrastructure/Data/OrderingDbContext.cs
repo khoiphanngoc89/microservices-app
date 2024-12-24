@@ -1,4 +1,4 @@
-﻿using Ordering.Domain.Entities;
+﻿using Ordering.Application.Data;
 
 namespace Ordering.Infrastructure.Data;
 

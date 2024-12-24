@@ -1,6 +1,4 @@
-﻿using Catalog.Api.Domains;
-
-namespace Catalog.Api.Application.Features.GetProductsByCategory;
+﻿namespace Catalog.Api.Application.Features.GetProductsByCategory;
 
 //public sealed record GetProductsByCatalogRequest
 public sealed record GetProductsByCatalogryResponse(IEnumerable<Product> products);

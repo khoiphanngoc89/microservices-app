@@ -9,4 +9,5 @@ public sealed record OrderId
         DomainException.ThrowIfNullOrEmpty(value, nameof(OrderId));
         return new OrderId(value.Value);
     }
+    public override string? ToString() => Value.ToString();
 }

@@ -1,7 +1,4 @@
-﻿using BuildingBlocks.Application;
-using Catalog.Api.Domains;
-
-namespace Catalog.Api.Application.Features.UpdateProduct;
+﻿namespace Catalog.Api.Application.Features.UpdateProduct;
 
 public sealed record UpdateProductCommand(
     Guid Id,
