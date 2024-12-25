@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using BuildingBlocks.Application.Behaviors;
+using BuildingBlocks.Application.MediatR.Behaviors;
 
 namespace Ordering.Application;
 

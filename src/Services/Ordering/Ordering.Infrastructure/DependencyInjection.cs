@@ -8,19 +8,16 @@ namespace Ordering.Infrastructure;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, string conectionStrings)
     {
-        services.AddDatabase(configuration);
+        services.AddDatabase(conectionStrings);
 
         //services.AddScoped<IOrderRepository, OrderRepository>();
         return services;
     }
 
-    private static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration)
+    private static IServiceCollection AddDatabase(this IServiceCollection services, string connectionStrings)
     {
-        var connectionStrings = configuration.GetConnectionString(Constants.DefaultConnection);
-        ArgumentException.ThrowIfNullOrWhiteSpace(connectionStrings);
-
         services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
         services.AddDbContext<OrderingDbContext>((sp, options) =>

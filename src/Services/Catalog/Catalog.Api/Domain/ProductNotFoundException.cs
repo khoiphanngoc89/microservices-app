@@ -1,4 +1,7 @@
-﻿namespace Catalog.Api.Domain;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
+
+namespace Catalog.Api.Domain;
 
 public sealed class ProductNotFoundException
     : NotFoundException

@@ -4,5 +4,5 @@ namespace BuildingBlocks.Application.Endpoints;
 
 public interface IEndpointModule
 {
-    void AddEndpoints(IEndpointRouteBuilder builder);
+    void AddEndpoints(IEndpointRouteBuilder app);
 }

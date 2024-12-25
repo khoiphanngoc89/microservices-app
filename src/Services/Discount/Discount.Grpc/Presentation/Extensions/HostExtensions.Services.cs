@@ -1,6 +1,4 @@
-﻿
-
-namespace Discount.Grpc.Presentation.Extensions;
+﻿namespace Discount.Grpc.Presentation.Extensions;
 public static partial class HostExtensions
 {
     internal static WebApplication AddServices(this WebApplicationBuilder builder)
@@ -8,8 +6,8 @@ public static partial class HostExtensions
         // Add services to the container.
         builder.Services.AddGrpc();
 
-        const string DefaultConnection = nameof(DefaultConnection);
-        var connectionStrings = builder.Configuration.GetConnectionString(DefaultConnection);
+        const string Database = nameof(Database);
+        var connectionStrings = builder.Configuration.GetConnectionString(Database);
         ArgumentNullException.ThrowIfNullOrWhiteSpace(connectionStrings);
         builder.Services.AddDbContext<DiscountDbContext>(opts =>
         {

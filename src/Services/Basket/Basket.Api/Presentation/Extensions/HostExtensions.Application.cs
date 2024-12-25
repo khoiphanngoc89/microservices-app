@@ -1,6 +1,4 @@
-﻿using BuildingBlocks.Application.Endpoints;
-
-namespace Basket.Api.Presentation.Extensions;
+﻿namespace Basket.Api.Presentation.Extensions;
 
 public static partial class HostExtensions
 {

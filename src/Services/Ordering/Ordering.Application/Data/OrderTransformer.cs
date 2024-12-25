@@ -5,7 +5,8 @@ public sealed class OrderTransformer
     private Address? _shippingAddress;
     private Address? _billingAddress;
     private Payment? _payment;
-    private Order? _order;
+    private Order? _originalOrder;
+    private OrderDto? _orderDto;
     private bool _createNew = true;
 
     private OrderTransformer()
@@ -14,11 +15,16 @@ public sealed class OrderTransformer
 
     public static OrderTransformer Init() => new();
 
-
     public OrderTransformer From(Order order)
     {
+        _originalOrder = order;
         _createNew = false;
-        _order = order;
+        return this;
+    }
+
+    public OrderTransformer DataSource(OrderDto orderDto)
+    {
+        _orderDto = orderDto;
         return this;
     }
 
@@ -37,17 +43,18 @@ public sealed class OrderTransformer
     public OrderTransformer WithPayment(PaymentDto payment)
     {
         _payment = Payment.Of(
-            payment.CardNumber,
             payment.CardHolderName,
+            payment.CardNumber,
             payment.Expiration,
             payment.Cvv,
             payment.PaymentMethod);
         return this;
     }
 
-    public Order Transform(OrderDto orderDto)
+    public Order Transform()
     {
-        return _createNew ? this.Create(orderDto) : this.Update(orderDto);
+        ArgumentNullException.ThrowIfNull(_orderDto);
+        return _createNew ? this.Create(_orderDto) : this.Update(_orderDto);
     }
 
     private static Address ToAddress(AddressDto addressDto)
@@ -82,12 +89,13 @@ public sealed class OrderTransformer
 
     private Order Update(OrderDto orderDto)
     {
-        _order!.Update(
+        ArgumentNullException.ThrowIfNull(_originalOrder);
+        _originalOrder!.Update(
             orderName: OrderName.Of(orderDto.OrderName),
             shippingAddress: _shippingAddress!,
             billingAddress: _billingAddress!,
             payment: _payment!,
             status: orderDto.Status);
-        return _order;
+        return _originalOrder;
     }
 }

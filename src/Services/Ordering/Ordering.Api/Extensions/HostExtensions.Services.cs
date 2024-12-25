@@ -1,4 +1,9 @@
-﻿namespace Ordering.Api.Extensions;
+﻿using BuildingBlocks.Domains;
+using Microsoft.Extensions.Configuration;
+using Ordering.Application;
+using Ordering.Infrastructure;
+
+namespace Ordering.Api.Extensions;
 
 public static partial class HostExtensions
 {
@@ -6,10 +11,12 @@ public static partial class HostExtensions
     {
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();
+        var connectionStrings = builder.Configuration.GetConnectionString(AppConstants.Database);
+        ArgumentException.ThrowIfNullOrWhiteSpace(connectionStrings);
 
-        //builder.Services.AddApplicationServices();
-        //builder.Services.AddInfrastructureServices(builder.Configuration);
-        builder.Services.AddApiServices();
+        builder.Services.AddApplicationServices();
+        builder.Services.AddInfrastructureServices(connectionStrings);
+        builder.Services.AddApiServices(connectionStrings);
 
         return builder.Build();
     }

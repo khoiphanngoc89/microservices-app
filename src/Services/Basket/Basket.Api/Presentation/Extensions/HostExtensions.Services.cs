@@ -1,5 +1,4 @@
-﻿using BuildingBlocks.Application.Endpoints;
-using BuildingBlocks.Presentation;
+﻿using BuildingBlocks.Presentation;
 using Discount.Grpc;
 
 namespace Basket.Api.Presentation.Extensions;
@@ -25,7 +24,7 @@ public static partial class HostExtensions
         builder.Services.AddValidatorsFromAssembly(assembly);
 
         // register database
-        var connectionStrings = builder.Configuration.GetConnectionString(Constants.DefaultConnection);
+        var connectionStrings = builder.Configuration.GetConnectionString(AppConstants.Database);
         ArgumentNullException.ThrowIfNullOrWhiteSpace(connectionStrings);
         builder.Services.AddDatabase(connectionStrings);
 
@@ -76,6 +75,7 @@ public static partial class HostExtensions
 
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();
+
 
         // create a IHost base on the services and essential configurations
         // not yet listen on http/https

@@ -1,4 +1,5 @@
-﻿using BuildingBlocks.Pagination;
+﻿using BuildingBlocks.Application.MediatR;
+using BuildingBlocks.Pagination;
 
 namespace Ordering.Application.Orders.Queries;
 

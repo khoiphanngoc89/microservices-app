@@ -2,7 +2,7 @@
 
 public class NotFoundException : Exception
 {
-    private const string DefaultMessage = "Entity \"{0}\" {1}\" are not found";
+    private const string DefaultMessage = "Entity \"{0}\" ({1}) are not found";
     public NotFoundException(string message) : base(message)
     {
     }

@@ -1,11 +1,8 @@
-﻿global using System.Diagnostics.CodeAnalysis;
-global using System.Runtime.CompilerServices;
-global using Basket.Api.Domain;
+﻿global using Basket.Api.Domain;
 global using Basket.Api.Infrastructure;
-global using BuildingBlocks.Application;
-global using BuildingBlocks.Application.Behaviors;
-global using BuildingBlocks.Domains;
 global using BuildingBlocks.Application.Endpoints;
+global using BuildingBlocks.Application.MediatR.Behaviors;
+global using BuildingBlocks.Domains;
 global using FluentValidation;
 global using HealthChecks.UI.Client;
 global using Mapster;

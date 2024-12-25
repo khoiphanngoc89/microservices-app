@@ -1,4 +1,6 @@
-﻿namespace Ordering.Application.Orders.Commands;
+﻿using BuildingBlocks.Application.MediatR;
+
+namespace Ordering.Application.Orders.Commands;
 
 public sealed record DeleteOrderCommand(Guid OrderId)
     : ICommand<DeleteOrderResult>;

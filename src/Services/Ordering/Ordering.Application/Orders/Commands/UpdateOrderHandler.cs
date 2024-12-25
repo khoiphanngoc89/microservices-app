@@ -1,9 +1,11 @@
-﻿namespace Ordering.Application.Orders.Commands;
+﻿using BuildingBlocks.Application.MediatR;
+
+namespace Ordering.Application.Orders.Commands;
 
 public sealed record UpdateOrderCommand(OrderDto Order)
     : ICommand<UpdateOrderResult>;
 
-public sealed record UpdateOrderResult(bool Succeeded);
+public sealed record UpdateOrderResult(bool IsSuccess);
 
 public sealed class UpdateOrderCommandValidator : AbstractValidator<UpdateOrderCommand>
 {
@@ -30,10 +32,11 @@ public sealed class UpdateOrderCommandHandler(IOrderingDbContext dbContext)
 
         var order = OrderTransformer.Init()
             .From(entity)
+            .DataSource(command.Order)
             .WithShippingAddress(command.Order.ShippingAddress)
             .WithBillingAddress(command.Order.BillingAddress)
             .WithPayment(command.Order.Payment)
-            .Transform(command.Order);
+            .Transform();
 
         dbContext.Orders.Update(order);
         await dbContext.SaveChangesAsync(cancellationToken);

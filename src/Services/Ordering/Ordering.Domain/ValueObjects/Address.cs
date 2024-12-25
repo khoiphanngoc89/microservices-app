@@ -64,6 +64,6 @@ public sealed record Address
     {
         DomainException.ThrowIfNullOrWhitespace(emailAddress);
         DomainException.ThrowIfNullOrWhitespace(addressLine);
-        return new Address(firstName, lastName, emailAddress, addressLine, phoneNumber, city, string.Empty, country, zipCode);
+        return new Address(firstName, lastName, emailAddress, addressLine, phoneNumber, city, default, country, zipCode);
     }
 }

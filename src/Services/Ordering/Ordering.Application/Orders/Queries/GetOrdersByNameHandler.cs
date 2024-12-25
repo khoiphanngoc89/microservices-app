@@ -1,4 +1,6 @@
-﻿namespace Ordering.Application.Orders.Queries;
+﻿using BuildingBlocks.Application.MediatR;
+
+namespace Ordering.Application.Orders.Queries;
 
 public sealed record GetOrderByNameQuery(string OrderName) : IQuery<GetOrdersByNameResult>;
 public sealed record GetOrdersByNameResult(IEnumerable<OrderDto> Orders);

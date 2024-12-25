@@ -1,11 +1,14 @@
-﻿namespace Basket.Api.Domain;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
+
+namespace Basket.Api.Domain;
 
 public sealed class BasketNotFoundException
     : NotFoundException
 {
-
+    private const string Basket = nameof(Basket);
     public BasketNotFoundException(string userName)
-        : base("Basket", userName)
+        : base(Basket, userName)
     {
     }
 

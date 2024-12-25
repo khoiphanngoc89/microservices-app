@@ -1,4 +1,6 @@
-﻿namespace Ordering.Application.Orders.Queries;
+﻿using BuildingBlocks.Application.MediatR;
+
+namespace Ordering.Application.Orders.Queries;
 
 public sealed record GetOrdersByCustomerQuery(Guid CustomerId) : IQuery<GetOrdersByCustomerResult>;
 public sealed record GetOrdersByCustomerResult(IEnumerable<OrderDto> Orders);
