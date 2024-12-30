@@ -20,8 +20,9 @@ public sealed class GetOrdersByCustomerQueryHandler(IOrderingDbContext dbContext
             .OrderBy(o => o.OrderName.Value)
             .ToListAsync(cancellationToken);
 
-        var results = OrderDtoTransformer.Init()
-            .Transform(orders);
+        var results = OrderDtoListTransformer.Init()
+            .DataSource(orders)
+            .Transform();
 
         return new GetOrdersByCustomerResult(results);
     }

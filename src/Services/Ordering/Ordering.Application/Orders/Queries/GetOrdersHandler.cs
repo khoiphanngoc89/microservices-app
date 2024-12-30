@@ -1,5 +1,5 @@
 ﻿using BuildingBlocks.Application.MediatR;
-using BuildingBlocks.Pagination;
+using BuildingBlocks.Domains.Pagination;
 
 namespace Ordering.Application.Orders.Queries;
 
@@ -26,7 +26,9 @@ public sealed class GetOrdersQueryHandler(IOrderingDbContext dbContext)
                 pageIndex,
                 pageSize,
                 totalCount,
-                OrderDtoTransformer.Init().Transform(orders)));
+                OrderDtoListTransformer.Init()
+                .DataSource(orders)
+                .Transform()));
 
 
     }

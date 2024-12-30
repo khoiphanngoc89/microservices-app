@@ -8,7 +8,7 @@ public sealed record OrderName
     public static OrderName Of(string value)
     {
         DomainException.ThrowIfNullOrWhitespace(value, nameof(OrderName));
-        DomainException.ThrowIfNotEqual(value.Length, DefaultLength, nameof(OrderName));
+        DomainException.ThrowIfGreaterThan(value.Length, DefaultLength, nameof(OrderName));
         return new OrderName(value);
     }
 }

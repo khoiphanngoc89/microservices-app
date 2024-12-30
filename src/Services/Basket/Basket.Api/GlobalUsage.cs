@@ -2,6 +2,7 @@
 global using Basket.Api.Infrastructure;
 global using BuildingBlocks.Application.Endpoints;
 global using BuildingBlocks.Application.MediatR.Behaviors;
+global using BuildingBlocks.Application.MediatR;
 global using BuildingBlocks.Domains;
 global using FluentValidation;
 global using HealthChecks.UI.Client;
@@ -9,3 +10,4 @@ global using Mapster;
 global using Marten;
 global using MediatR;
 global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+global using Basket.Api.Presentation.Dtos;

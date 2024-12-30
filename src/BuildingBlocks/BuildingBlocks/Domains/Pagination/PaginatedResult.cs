@@ -1,4 +1,4 @@
-﻿namespace BuildingBlocks.Pagination;
+﻿namespace BuildingBlocks.Domains.Pagination;
 
 public class PaginatedResult<TEntity>(
     int pageIndex,

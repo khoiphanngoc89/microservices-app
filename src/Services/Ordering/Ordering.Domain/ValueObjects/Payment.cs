@@ -34,7 +34,7 @@ public sealed record Payment
         DomainException.ThrowIfNullOrWhitespace(cardNumber);
         DomainException.ThrowIfNullOrWhitespace(expiration);
         DomainException.ThrowIfNullOrWhitespace(cvv);
-        DomainException.ThrowIfNotEqual(cvv.Length, DefaultLength);
+        DomainException.ThrowIfGreaterThan(cvv.Length, DefaultLength);
 
         return new Payment(CardHolderName, cardNumber, expiration, cvv, paymentMethod);
     }

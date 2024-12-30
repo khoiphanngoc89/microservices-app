@@ -34,9 +34,9 @@ public sealed class DomainException : Exception
         }
     }
 
-    public static void ThrowIfNotEqual([NotNull] int valueLength, int expectedLength, [CallerArgumentExpression(nameof(valueLength))] string paramName = default!)
+    public static void ThrowIfGreaterThan([NotNull] int valueLength, int expectedLength, [CallerArgumentExpression(nameof(valueLength))] string paramName = default!)
     {
-        if (valueLength != expectedLength)
+        if (valueLength > expectedLength)
         {
             string message = paramName is null
                 ? $"The value is not equal to {expectedLength}"

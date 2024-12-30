@@ -14,6 +14,9 @@ public sealed class BasketNotFoundException
 
     public static void ThrowIfNull([NotNull] ShoppingCart? cart, [CallerArgumentExpression(nameof(cart))] string userName = default!)
     {
+        // better readability / Concise
+        // == operator can be overloaded and many return a boolean that
+        // you don;t expect
         if (cart is null)
         {
             throw new BasketNotFoundException(userName);

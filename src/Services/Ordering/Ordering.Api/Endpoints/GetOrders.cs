@@ -1,4 +1,4 @@
-﻿using BuildingBlocks.Pagination;
+﻿using BuildingBlocks.Domains.Pagination;
 using Ordering.Application.Orders.Queries;
 
 namespace Ordering.Api.Endpoints;

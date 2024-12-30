@@ -43,6 +43,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.Messaging", "src\BuildingBlocks\BuildingBlocks.Messaging\BuildingBlocks.Messaging.csproj", "{9EA3AE63-1878-4729-ABF0-F6EE2D908227}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +87,10 @@ Global
 		{4E9A1709-8DBF-498B-A09E-B1D19B4C002B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E9A1709-8DBF-498B-A09E-B1D19B4C002B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E9A1709-8DBF-498B-A09E-B1D19B4C002B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EA3AE63-1878-4729-ABF0-F6EE2D908227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EA3AE63-1878-4729-ABF0-F6EE2D908227}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EA3AE63-1878-4729-ABF0-F6EE2D908227}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EA3AE63-1878-4729-ABF0-F6EE2D908227}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,5 +110,6 @@ Global
 		{0DB3BC82-A2CF-4F7C-95C6-359BE51CE2C1} = {BE2F7DAA-5B98-48F2-9679-42AD61B7846F}
 		{2C0060BA-C720-4A1E-8E26-7657A6599C88} = {BE2F7DAA-5B98-48F2-9679-42AD61B7846F}
 		{4E9A1709-8DBF-498B-A09E-B1D19B4C002B} = {BE2F7DAA-5B98-48F2-9679-42AD61B7846F}
+		{9EA3AE63-1878-4729-ABF0-F6EE2D908227} = {1CFDD8EB-C45C-4875-943E-391519A03330}
 	EndGlobalSection
 EndGlobal

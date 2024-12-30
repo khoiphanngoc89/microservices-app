@@ -14,7 +14,7 @@ public static partial class HostExtensions
         var connectionStrings = builder.Configuration.GetConnectionString(AppConstants.Database);
         ArgumentException.ThrowIfNullOrWhiteSpace(connectionStrings);
 
-        builder.Services.AddApplicationServices();
+        builder.Services.AddApplicationServices(builder.Configuration);
         builder.Services.AddInfrastructureServices(connectionStrings);
         builder.Services.AddApiServices(connectionStrings);
 

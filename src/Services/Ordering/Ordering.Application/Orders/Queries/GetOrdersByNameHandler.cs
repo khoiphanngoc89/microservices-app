@@ -25,7 +25,9 @@ public sealed class GetOrdersByNameHandler(IOrderingDbContext dbContext)
             .OrderBy(x => x.OrderName)
             .ToListAsync(cancellationToken);
 
-        var results = OrderDtoTransformer.Init().Transform(orders);
+        var results = OrderDtoListTransformer.Init()
+            .DataSource(orders)
+            .Transform();
         return new GetOrdersByNameResult(results);
 
     }

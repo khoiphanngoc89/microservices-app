@@ -1,4 +1,5 @@
-﻿using BuildingBlocks.Presentation;
+﻿using BuildingBlocks.Messaging.MassTransit;
+using BuildingBlocks.Presentation;
 using Discount.Grpc;
 
 namespace Basket.Api.Presentation.Extensions;
@@ -39,7 +40,7 @@ public static partial class HostExtensions
             opts.Configuration = redisConnectionString;
         });
 
-        // register the decorate with add scope
+        // register the decorate with add scope manually
         //builder.Services.AddScoped<IBasketRepository>(provider =>
         //{
         //    var repository = provider.GetRequiredService<BasketRepository>();
@@ -56,7 +57,7 @@ public static partial class HostExtensions
         {
             // https://github.com/grpc/grpc-dotnet/issues/792
             // For debug only
-            var handler = new HttpClientHandler()
+            var handler = new HttpClientHandler
             {
                 ServerCertificateCustomValidationCallback =
                 HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
@@ -65,7 +66,13 @@ public static partial class HostExtensions
             return handler;
         });
 
+        // register message broker for async communication
+        // Basket is publisher side so that we need to provide any assembly
+        // to register the consumers
+        builder.Services.AddMessageBroker(builder.Configuration);
+
         // Register global exception handler
+        // cross-cutting services
         builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
         // register for health check
