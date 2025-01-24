@@ -1,20 +1,17 @@
-// the proto version we are using
 syntax = "proto3";
 
-// this is options. It tells proto burf a namespace of generate file 
+// tell protobuf complier to generate c# classes with the specific namespace
 option csharp_namespace = "Discount.Grpc";
 
 package discount;
 
 // The discount service definition
-// change a configuration to protobruf compiler
-// change the grpc stubclass to server
 service DiscountProtoService {
 	// Discount CRUD operations
-	rpc GetDiscount (GetDiscountRequest) returns (CouponModel);
-	rpc CreateDiscount (CreateDiscountRequest) returns (CouponModel);
-	rpc UpdateDiscount (UpdateDiscountRequest) returns (CouponModel);
-	rpc DeleteDiscount (DeleteDiscountRequest) returns (DeleteDiscountResponse);
+	rpc GetDiscount(GetDiscountRequest) returns (CouponModel);
+    rpc CreateDiscount(CreateDiscountRequest) returns (DiscountModel);
+	rpc UpdateDiscount(UpdateDiscountRequest) returns (DiscountModel);
+	rpc DeleteDiscount(DeleteDiscountRequest) returns (DeleteDiscountResponse);
 }
 
 message GetDiscountRequest {

@@ -1,6 +1,11 @@
-using Basket.Api.Presentation.Extensions;
+using Basket.Api;
+using BuildingBlocks.Common.Logging;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
-var app = builder.AddServices().UsePipeline();
+// register for serilog
+builder.Host.UseSerilog(Serilogger.Configure);
+
+var app = builder.ConfigureServices().ConfigurePipeline();
 
 app.Run();
