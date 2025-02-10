@@ -1,5 +1,5 @@
-using BuildingBlocks.Common.Logging;
 using Catalog.Api;
+using Common.Logging;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);

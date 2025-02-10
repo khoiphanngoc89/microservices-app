@@ -4,6 +4,7 @@ using BuildingBlocks.Common.Behaviors;
 using BuildingBlocks.Common.Core;
 using BuildingBlocks.Common.Core.Exceptions.Handler;
 using Carter;
+using Discount.Grpc;
 using HealthChecks.UI.Client;
 using Marten;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -17,8 +18,56 @@ public static class DependencyInjection
     {
         var assembly = typeof(Program).Assembly;
 
+        // Application services
         // register for carter
         builder.Services.AddCarter(new ContextAssemblyCatalog(assembly));
+        // register for mediatr
+        builder.Services.AddMediatR(opts =>
+        {
+            opts.RegisterServicesFromAssembly(assembly);
+            opts.AddOpenBehavior(typeof(LoggingBehavior<,>));
+            opts.AddOpenBehavior(typeof(ValidationBehavior<,>));
+        });
+
+        // Data service
+        var connectionString = builder.Configuration.GetConnectionString("Database");
+        ArgumentNullException.ThrowIfNullOrWhiteSpace(connectionString);
+        builder.Services.AddMarten(opts =>
+        {
+            opts.Connection(connectionString);
+            // setup username as identity
+            opts.Schema.For<ShoppingCart>().Identity(x => x.UserName);
+        }).UseLightweightSessions();
+
+        builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+        builder.Services.Decorate<IBasketRepository, CachedBasketRepository>();
+
+        var redis = builder.Configuration.GetConnectionString("Redis");
+        ArgumentNullException.ThrowIfNullOrWhiteSpace(redis);
+        builder.Services.AddStackExchangeRedisCache(opts =>
+        {
+            opts.Configuration = redis;
+            //options.InstanceName = "Basket";
+        });
+
+        // Grpc Service
+        var discountUrl = builder.Configuration["GrpcSettings:DiscountUrl"];
+        ArgumentNullException.ThrowIfNullOrWhiteSpace(discountUrl);
+        builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(opts =>
+        {
+            opts.Address = new Uri(discountUrl);
+        }).ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
+        {
+            ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+        }); ;
+
+        // cutting-cross concerns
+        builder.Services.AddExceptionHandler<CustomExceptionHandler>();
+
+        // register health checks
+        builder.Services.AddHealthChecks()
+            .AddNpgSql(connectionString)
+            .AddRedis(redis);
 
         // register htp logging the request and response data
         // https://stackoverflow.com/questions/78673062/how-to-set-up-serilog-to-log-request-and-response-bodies-together
@@ -44,42 +93,6 @@ public static class DependencyInjection
         {
             opts.EnableAnnotations();
         });
-
-        // register for mediatr
-        builder.Services.AddMediatR(opts =>
-        {
-            opts.RegisterServicesFromAssembly(assembly);
-            opts.AddOpenBehavior(typeof(LoggingBehavior<,>));
-            opts.AddOpenBehavior(typeof(ValidationBehavior<,>));
-        });
-
-        var connectionString = builder.Configuration.GetConnectionString("Database");
-        ArgumentNullException.ThrowIfNullOrWhiteSpace(connectionString);
-        builder.Services.AddMarten(opts =>
-        {
-            opts.Connection(connectionString);
-            // setup username as identity
-            opts.Schema.For<ShoppingCart>().Identity(x => x.UserName);
-        }).UseLightweightSessions();
-
-        builder.Services.AddScoped<IBasketRepository, BasketRepository>();
-        builder.Services.Decorate<IBasketRepository, CachedBasketRepository>();
-
-        var redis = builder.Configuration.GetConnectionString("Redis");
-        ArgumentNullException.ThrowIfNullOrWhiteSpace(redis);
-        builder.Services.AddStackExchangeRedisCache(opts =>
-        {
-            opts.Configuration = redis;
-            //options.InstanceName = "Basket";
-        });
-
-        // cutting-cross concerns
-        builder.Services.AddExceptionHandler<CustomExceptionHandler>();
-
-        // register health checks
-        builder.Services.AddHealthChecks()
-            .AddNpgSql(connectionString)
-            .AddRedis(redis);
 
         return builder.Build();
     }

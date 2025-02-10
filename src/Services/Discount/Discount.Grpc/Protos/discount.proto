@@ -1,17 +1,16 @@
 syntax = "proto3";
 
-// tell protobuf complier to generate c# classes with the specific namespace
 option csharp_namespace = "Discount.Grpc";
 
 package discount;
 
-// The discount service definition
+// The discount service definition.
 service DiscountProtoService {
-	// Discount CRUD operations
-	rpc GetDiscount(GetDiscountRequest) returns (CouponModel);
-    rpc CreateDiscount(CreateDiscountRequest) returns (DiscountModel);
-	rpc UpdateDiscount(UpdateDiscountRequest) returns (DiscountModel);
-	rpc DeleteDiscount(DeleteDiscountRequest) returns (DeleteDiscountResponse);
+	// Discount CRUD Operations
+	rpc GetDiscount (GetDiscountRequest) returns (CouponModel);
+	rpc CreateDiscount (CreateDiscountRequest) returns (CouponModel);
+	rpc UpdateDiscount (UpdateDiscountRequest) returns (CouponModel);
+	rpc DeleteDiscount (DeleteDiscountRequest) returns (DeleteDiscountResponse);
 }
 
 message GetDiscountRequest {
@@ -19,10 +18,10 @@ message GetDiscountRequest {
 }
 
 message CouponModel {
-	int32 id = 1;
-	string productName = 2;
-	string description = 3;
-	int32 amount = 4;
+	string id = 1;
+	string productName = 3;
+	string description = 4;
+	int32 amount = 5;
 }
 
 message CreateDiscountRequest {
@@ -34,7 +33,7 @@ message UpdateDiscountRequest {
 }
 
 message DeleteDiscountRequest {
-	string productName = 1;
+	string productName = 2;
 }
 
 message DeleteDiscountResponse {

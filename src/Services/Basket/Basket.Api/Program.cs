@@ -1,5 +1,5 @@
 using Basket.Api;
-using BuildingBlocks.Common.Logging;
+using Common.Logging;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -12,10 +12,11 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["src/Services/Discount/Discount.Api/Discount.Grpc/Discount.Grpc.csproj", "src/Services/Discount/Discount.Api/Discount.Grpc/"]
-RUN dotnet restore "./src/Services/Discount/Discount.Api/Discount.Grpc/Discount.Grpc.csproj"
+COPY ["Services/Discount/Discount.Grpc/Discount.Grpc.csproj", "Services/Discount/Discount.Grpc/"]
+COPY ["BuildingBlocks/Common.Logging/Common.Logging.csproj", "BuildingBlocks/Common.Logging/"]
+RUN dotnet restore "./Services/Discount/Discount.Grpc/Discount.Grpc.csproj"
 COPY . .
-WORKDIR "/src/src/Services/Discount/Discount.Api/Discount.Grpc"
+WORKDIR "/src/Services/Discount/Discount.Grpc"
 RUN dotnet build "./Discount.Grpc.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
